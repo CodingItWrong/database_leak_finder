@@ -1,6 +1,6 @@
 module DatabaseLeakFinder
   class ErrorReporter
-    def log(example, leaks)
+    def report(example, leaks)
       message_rows =
         ["The spec '#{spec_path_for(example)}' leaves the following rows in the database:"]
         + leaks.each(&method(:format_leak))
