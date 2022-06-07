@@ -9,7 +9,7 @@ module DatabaseLeakFinder
 
       def find_leaks
         leaks = finder.process
-        logger.log(@example, leaks) unless leaks.empty?
+        error_reporter.report(@example, leaks) unless leaks.empty?
       end
 
       def config(options)
@@ -23,6 +23,10 @@ module DatabaseLeakFinder
 
       def logger
         @logger ||= DatabaseLeakFinder::Logger.new
+      end
+
+      def error_reporter
+        @error_reporter ||= DatabaseLeakFinder::ErrorReporter.new
       end
     end
   end
