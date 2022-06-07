@@ -1,4 +1,5 @@
 require 'active_record'
+require 'database_leak_finder/error_reporter'
 require 'database_leak_finder/finder'
 require 'database_leak_finder/handler'
 require 'database_leak_finder/logger'
