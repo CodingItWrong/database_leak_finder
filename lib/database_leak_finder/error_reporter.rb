@@ -3,7 +3,7 @@ module DatabaseLeakFinder
     def report(example, leaks)
       message_rows =
         ["The spec '#{spec_path_for(example)}' leaves the following rows in the database:"]
-        + leaks.each(&method(:format_leak))
+        + leaks.each.map(&method(:format_leak))
       raise message_rows.join(' ')
     end
 
